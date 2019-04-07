@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>woodspring</groupId>
-	<artifactId>springheight</artifactId>
+	<artifactId>springheigh</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SpringHeight</name>
+	<name>SpringHeigh</name>
 	<description>SpringHill project for Spring Boot</description>
 
 	<properties>
