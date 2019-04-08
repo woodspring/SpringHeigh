@@ -15,7 +15,8 @@ public class FxConstant {
 			"EURUSD", "EURTRY", "EURJPY", "EURCHF", "EURGBP", "EURNZD", "EURCAD", "EURNOK",
 			"GBPUSD", "GBPCAD", "GBPTRY", "GBPCHF", "GBPJPY" 
 	}; 
-	public static final String[] symbols2 = new String[] { "USDCAD", "USDJPY", "USDCHF", "USDNOK", "USDSEK", "AUDUSD",
+	public static final String[] symbols2 = new String[] { 
+			"USDCAD", "USDJPY", "USDCHF", "USDNOK", "USDSEK", "AUDUSD",
 			"NZDUSD", "AUDCHF", "AUDJPY", "CHFJPY", "CHFNOK", "EURUSD", "EURCAD", "EURCHF", "EURGBP", "EURJPY",
 			"EURNOK", "EURSEK", "GBPUSD", "GBPCAD", "GBPNOK", "GBPSEK", "NOKJPY", "SEKJPY", "NZDCAD", "NZDJPY", "NZDNOK",
 			"NZDSEK", "USDTRY", "EURTRY", "GBPTRY", "USDZAR", "USDKRW"

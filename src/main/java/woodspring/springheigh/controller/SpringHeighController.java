@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
+import woodspring.springheigh.model.FxForwardPoint;
 import woodspring.springheigh.model.FxSpotRate;
 import woodspring.springheigh.service.SpringHeighService;
 
@@ -33,10 +34,15 @@ public class SpringHeighController {
 	
 	
 	
-	@GetMapping("FORWARDPOINT/{symbol}")
-	public List<FxSpotRate> getForwardPoint(String symbol) {
+	@GetMapping("FORWARDPOINT/all")
+	public List<FxForwardPoint> getForwardPoint() {
 		
 		return null;
 	}
 
+	@GetMapping("FORWARDPOINT/{symbol}")
+	public List<FxForwardPoint> getForwardPoint(String symbol) {
+		
+		return null;
+	}
 }

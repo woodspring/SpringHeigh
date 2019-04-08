@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import woodspring.springheigh.model.FxForwardPoint;
 import woodspring.springheigh.model.FxSpotRate;
+import woodspring.springheigh.util.SpringReadWriteLock;
 
 
 @Component
@@ -20,9 +21,12 @@ public class HeightenFxMarketDataProvider {
 	private static ConcurrentHashMap<String, ArrayList<FxForwardPoint>> fxFwdPointCache; 
 	private static ConcurrentSkipListMap< String, FxSpotRate> fxSpotRateCache;
 	
+	private static SpringReadWriteLock fwdReadWriteLock = new SpringReadWriteLock();
 	
+	private static SpringReadWriteLock spotReadWriteLock = new SpringReadWriteLock();
 	
-	private static List<FxForwardPoint> grepSwapPointsAndSpotRate(String symbol,  HtmlUnitDriver unitDriver) throws FileNotFoundException, InterruptedException {
+	public List<FxForwardPoint> grepSwapPointsAndSpotRate(String symbol,  HtmlUnitDriver unitDriver) throws FileNotFoundException, InterruptedException {
+		List<FxForwardPoint> fxFwdPtList = new ArrayList<FxForwardPoint>();
 //		 List<MarketRawDataVo> all_data = new ArrayList<>();
 //		 String formattedSymbol = symbol.toLowerCase();
 //		formattedSymbol = formattedSymbol.substring(0, 3) + "-" + formattedSymbol.substring(3,6);
@@ -69,7 +73,10 @@ public class HeightenFxMarketDataProvider {
 //		String spotRateStr = spotRate.getText();
 //		all_data.add(new MarketRawDataVo(RawDataType.SPOT_RATE, symbol, new BigDecimal(bidRate).doubleValue(), new BigDecimal(spotRateStr).doubleValue(), new BigDecimal(askRate).doubleValue()));
 //		return all_data;
-		return new ArrayList<FxForwardPoint>();
+		
+		//fwdReadWriteLock.write(() -> fxFwdPointCache.put(symbol,  (ArrayList<FxForwardPoint>) fxFwdPtList));
+		fxFwdPointCache.put(symbol,  (ArrayList<FxForwardPoint>) fxFwdPtList);
+		return fxFwdPtList;
 	} 
 
 }
