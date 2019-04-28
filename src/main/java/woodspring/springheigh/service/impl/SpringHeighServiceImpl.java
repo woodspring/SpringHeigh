@@ -26,17 +26,17 @@ public class SpringHeighServiceImpl implements SpringHeighService {
 	
 	@Override
 	public List<FxSpotRate> getSpotRate() {
-		
-		Arrays.asList( FxConstant.symbols2).stream()
-		.map((Function<? super String, ? extends R>) symbol -> {
-				CompletableFuture.supplyAsync( () -> {
-						fxMarketData.getFxSpotRate( symbol);
-						})
-					.thenApply( item -> {
-						return item.get();
-						});
-		})
-		.collect( Collectors.toList());
+//		
+//		Arrays.asList( FxConstant.symbols2).stream()
+//		.map((Function<? super String, ? extends R>) symbol -> {
+//				CompletableFuture.supplyAsync( () -> {
+//						fxMarketData.getFxSpotRate( symbol);
+//						})
+//					.thenApply( item -> {
+//						return item.get();
+//						});
+//		})
+//		.collect( Collectors.toList());
 		
 		// TODO Auto-generated method stub
 		return null;
