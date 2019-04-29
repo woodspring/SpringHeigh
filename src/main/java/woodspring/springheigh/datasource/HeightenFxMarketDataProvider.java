@@ -6,9 +6,12 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.springframework.stereotype.Component;
 
+import woodspring.springheigh.constants.FxConstant;
 import woodspring.springheigh.model.FxForwardPoint;
 import woodspring.springheigh.model.FxSpotRate;
 import woodspring.springheigh.util.SpringReadWriteLock;
@@ -26,7 +29,16 @@ public class HeightenFxMarketDataProvider {
 	private static SpringReadWriteLock spotReadWriteLock = new SpringReadWriteLock();
 	
 	public List<FxForwardPoint> grepSwapPointsAndSpotRate(String symbol,  HtmlUnitDriver unitDriver) throws FileNotFoundException, InterruptedException {
-		List<FxForwardPoint> fxFwdPtList = new ArrayList<FxForwardPoint>();
+		List<FxForwardPoint> fxFwdPtList = new ArrayList<>();
+		 String formattedSymbol = FxConstant.SYMBOL.toLowerCase();
+		formattedSymbol = formattedSymbol.substring(0, 3) + "-" + formattedSymbol.substring(3,6);
+		// open google.com webpage
+		unitDriver.get("https://ca.investing.com/currencies/" + formattedSymbol + "-forward-rates");
+		Thread.sleep(1000);
+		WebElement table = unitDriver.findElement(By.id("curr_table"));
+		WebElement tableBody = table.findElement(By.tagName("tbody"));
+		List<WebElement> records = tableBody.findElements(By.tagName("tr"));
+
 //		 List<MarketRawDataVo> all_data = new ArrayList<>();
 //		 String formattedSymbol = symbol.toLowerCase();
 //		formattedSymbol = formattedSymbol.substring(0, 3) + "-" + formattedSymbol.substring(3,6);

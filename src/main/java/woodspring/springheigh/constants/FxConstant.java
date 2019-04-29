@@ -6,6 +6,7 @@ public class FxConstant {
 
 	
 	public static final Pattern pattern = Pattern.compile("(\\S{6}) (\\S{2}) FWD");
+	public static final String SYMBOL = "USDCAD";
 //	public static final String[] symbols= new String[] { "USDTRY", "EURUSD", "EURTRY"}; 
 	public static final String[] symbols1= new String[] { 
 			"AUDUSD", 
